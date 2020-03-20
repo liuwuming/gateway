@@ -46,7 +46,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.zfec</groupId>
-			<artifactId>zfec-common</artifactId>
+			<artifactId>common-utils</artifactId>
 			<version>0.0.1</version>
 		</dependency>
 	</dependencies>

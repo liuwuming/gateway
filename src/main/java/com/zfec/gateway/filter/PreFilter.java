@@ -1,20 +1,16 @@
 package com.zfec.gateway.filter;
 
-import com.alibaba.fastjson.JSON;
-import com.netflix.zuul.ZuulFilter;
-import com.netflix.zuul.context.RequestContext;
-import com.zfec.common.util.ResponseCode;
-import com.zfec.common.util.ResponseData;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import com.alibaba.fastjson.JSON;
+import com.cloud.common.util.ResponseCode;
+import com.cloud.common.util.ResponseData;
+import com.netflix.zuul.ZuulFilter;
+import com.netflix.zuul.context.RequestContext;
  
 @Component
 public class PreFilter extends ZuulFilter {
