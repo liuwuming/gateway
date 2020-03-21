@@ -2,6 +2,7 @@ package com.zfec.gateway.filter;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -45,8 +46,8 @@ public class PreFilter extends ZuulFilter {
 		log.info("send {} request to {}", request.getMethod(), uri);
 		
 		if (!uri.equalsIgnoreCase("/logservice/checkUser")) {
-			if (auth == null) {
-				log.warn("access token is empty");
+			if (StringUtils.isEmpty(auth)) {
+				log.error("非法请求 token is empty .");
 				ResponseData responseData = ResponseData.fail("非法请求【缺少Authorization信息】", ResponseCode.NO_AUTH_CODE.getCode());
 				// 过滤该请求，不往下级服务去转发请求，到此结束
 				ctx.setSendZuulResponse(false);
@@ -62,7 +63,7 @@ public class PreFilter extends ZuulFilter {
 				return ctx;
 			}
 			// 如果有token，则进行路由转发
-			log.info("access token ok");
+			log.info("request token ok ...");
 		}
 		
 		return null;
